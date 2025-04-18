@@ -31,6 +31,7 @@ com\mycompany\calculovigasre\Vistas\InfoVistaRe.class
 com\mycompany\calculovigasre\Vistas\AltaVistaRe$Listener9.class
 com\mycompany\calculovigasre\Vistas\CompatibilidadVistaRe$Escuchador3.class
 com\mycompany\calculovigasre\Vistas\EstudioVistaRe$Escuchador6.class
+com\mycompany\calculovigasre\Vistas\AltaVistaRe$Listener10.class
 com\mycompany\calculovigasre\DeprecatedControladores\AltaControlador$Escuchador9.class
 com\mycompany\calculovigasre\Vistas\InfoVistaRe$1.class
 com\mycompany\calculovigasre\DeprecatedControladores\CompatibilidadControlador$Escuchador1.class

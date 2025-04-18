@@ -2,6 +2,7 @@ package com.mycompany.calculovigasre.DeprecatedControladores;
 
 import com.mycompany.calculovigasre.CompatibilidadEnIntervencionesHistoricas;
 import VistasDeprecated.AltaVista;
+import com.mycompany.calculovigasre.ElementosLinealesCubiertas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -37,13 +38,12 @@ public class AltaControlador extends AltaVista{
 		
 			String g;
 			
-			boolean f;
+			ElementosLinealesCubiertas f;
 
 			f=d.altaViga(cI, baI, rI, mI, sI);
 		
-			
-			if(f) {
-				g="Se registro con exito";
+                        if(f!=null) {
+				g=f.toString()+"\nSe registro con exito";
 			}
 			else {
 				g="No se registro";
@@ -65,8 +65,7 @@ public class AltaControlador extends AltaVista{
 			Double peI, clI,riI;
 			
 			String r=arg0.getActionCommand();
-			boolean f = false;
-			String g;
+			String f="";
 			
 			switch(r.charAt(0)) {
 				case '1':					
@@ -88,14 +87,9 @@ public class AltaControlador extends AltaVista{
 					f=d.setClaro(claveI, peI, riI);
 					break;
 			}
-			if(f) {
-				g="Se registro con exito";
-			}
-			else {
-				g="No se registro";
-			}
 			
-			info.setText(g);
+			
+			info.setText(f);
 		}
 	}
 	

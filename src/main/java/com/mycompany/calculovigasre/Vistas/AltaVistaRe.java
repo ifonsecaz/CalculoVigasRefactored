@@ -5,6 +5,7 @@
 package com.mycompany.calculovigasre.Vistas;
 
 import com.mycompany.calculovigasre.CompatibilidadEnIntervencionesHistoricas;
+import com.mycompany.calculovigasre.ElementosLinealesCubiertas;
 //import com.mycompany.calculovigasre.Controladores.AltaControlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +29,7 @@ public class AltaVistaRe extends javax.swing.JFrame {
         altaR.addActionListener(new Listener9());
         altaP.addActionListener(new Listener9());
         altaC.addActionListener(new Listener9());
+        getviga.addActionListener(new Listener10());
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -65,6 +67,7 @@ public class AltaVistaRe extends javax.swing.JFrame {
         pText = new javax.swing.JTextField();
         cText = new javax.swing.JTextField();
         alta = new javax.swing.JButton();
+        getviga = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(647, 358));
@@ -135,6 +138,10 @@ public class AltaVistaRe extends javax.swing.JFrame {
         alta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         alta.setText("Dar de alta");
 
+        getviga.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getviga.setText("Info Viga");
+        getviga.setActionCommand("getviga");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,52 +151,63 @@ public class AltaVistaRe extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, Short.MAX_VALUE)
+                            .addComponent(altaR, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(altaP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(altaC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(altaR, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(altaP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(altaC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1))
+                                .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(reTxt)
+                                    .addComponent(calTxt)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(secTxt))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(calTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                            .addComponent(reTxt)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel9)
                                             .addComponent(jLabel8))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cText, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                            .addComponent(rText)
-                                            .addComponent(pText))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(cText, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                                .addComponent(rText)
+                                                .addComponent(pText))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(25, 25, 25)
+                                                .addComponent(jLabel6)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(claveTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(secTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel4))
                                 .addGap(18, 18, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(bTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                    .addComponent(modTxt)
-                                    .addComponent(claveTxt))))
-                        .addGap(65, 65, 65))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(alta)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(modTxt)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(getviga)
+                                    .addComponent(alta))))))
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,12 +228,14 @@ public class AltaVistaRe extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
+                    .addComponent(secTxt)
+                    .addComponent(alta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(claveTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(claveTxt)
-                    .addComponent(secTxt))
+                    .addComponent(getviga))
                 .addGap(18, 18, 18)
-                .addComponent(alta)
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(altaR)
                     .addComponent(jLabel9)
@@ -224,7 +244,7 @@ public class AltaVistaRe extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(pText))
+                        .addComponent(pText, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(altaP)
                         .addComponent(jLabel7)))
@@ -255,13 +275,13 @@ public class AltaVistaRe extends javax.swing.JFrame {
 		
 			String g;
 			
-			boolean f;
+			ElementosLinealesCubiertas f;
 
 			f=d.altaViga(cI, baI, rI, mI, sI);
 		
 			
-			if(f) {
-				g="Se registro con exito";
+			if(f!=null) {
+				g=f.toString()+"\nSe registro con exito";
 			}
 			else {
 				g="No se registro";
@@ -277,45 +297,73 @@ public class AltaVistaRe extends javax.swing.JFrame {
                             String clTxt = cText.getText();
                             String riTxt= rText.getText();
                             String clavTxt=claveTxt.getText();
-
-                            int claveI=Integer.parseInt(clavTxt);
+                            String f="";
+                            
 
                             Double peI, clI,riI;
 
                             String r=arg0.getActionCommand();
-                            boolean f = false;
-                            String g;
-
-                            switch(r.charAt(0)) {
-                                    case '1':					
-                                            peI= Double.parseDouble(peTxt);
-                                            clI= Double.parseDouble(clTxt);
-
-                                            f=d.setRigidez(claveI, clI, peI);
-                                            break;
-                                    case '2': 
-                                            clI= Double.parseDouble(clTxt);
-                                            riI= Double.parseDouble(riTxt);
-
-                                            f=d.setPeralte(claveI, clI, riI);
-                                            break;
-                                    case '3':
-                                            peI= Double.parseDouble(peTxt);
-                                            riI= Double.parseDouble(riTxt);
-
-                                            f=d.setClaro(claveI, peI, riI);
-                                            break;
+                            
+                            if(clavTxt.equals("")){
+                                f="Inserta la clave";
+                                info.setText(f);
+                                
                             }
-                            if(f) {
-                                    g="Se registro con exito";
-                            }
-                            else {
-                                    g="No se registro";
-                            }
+                            else{
+                                int claveI=Integer.parseInt(clavTxt);
 
-                            info.setText(g);
+                                switch(r.charAt(0)) {
+                                        case '1':	
+                                                if(!clTxt.equals("")&&!peTxt.equals("")){
+                                                    peI= Double.parseDouble(peTxt);
+                                                    clI= Double.parseDouble(clTxt);
+
+                                                    f=d.setRigidez(claveI, clI, peI);
+                                                }
+                                                else{
+                                                    f="Se necesita el claro y el peralte";
+                                                }
+                                                break;
+                                        case '2': 
+                                                if(!clTxt.equals("")&&!riTxt.equals("")){
+                                                    clI= Double.parseDouble(clTxt);
+                                                    riI= Double.parseDouble(riTxt);
+
+                                                    f=d.setPeralte(claveI, clI, riI);
+                                                }
+                                                else{
+                                                    f="Se necesita el claro y rigidez";
+                                                }
+                                                break;
+                                        case '3':
+                                                if(!riTxt.equals("")&&!peTxt.equals("")){
+                                                    peI= Double.parseDouble(peTxt);
+                                                    riI= Double.parseDouble(riTxt);
+
+                                                    f=d.setClaro(claveI, peI, riI);
+                                                }
+                                                else{
+                                                    f="Se necesita el peralte y rigidez";
+                                                }
+                                                break;
+                                }
+
+                                info.setText(f);
+                            }
                     }
             }
+    
+    private class Listener10 implements ActionListener{
+		public void actionPerformed(ActionEvent arg10) {
+			String cTxt= claveTxt.getText();
+			
+			String f;
+
+			f=d.getUnaViga(Integer.parseInt(cTxt));
+
+			info.setText(f);
+		}
+	}
     /**
      * @param args the command line arguments
      */
@@ -360,6 +408,7 @@ public class AltaVistaRe extends javax.swing.JFrame {
     private javax.swing.JTextField cText;
     private javax.swing.JTextField calTxt;
     private javax.swing.JTextField claveTxt;
+    private javax.swing.JButton getviga;
     private javax.swing.JTextArea info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -62,15 +62,15 @@ public class CompatibilidadEnIntervencionesHistoricas {
 		return res;
 	}
 	
-	public boolean altaViga(int calidadConcreto, int base, double recubrimientos,double espaciado, int seccion) {
-		boolean res=false;
+	public ElementosLinealesCubiertas altaViga(int calidadConcreto, int base, double recubrimientos,double espaciado, int seccion) {
+		ElementosLinealesCubiertas res=null;
 		int cantVigas=this.modulado[seccion];
 		ElementosLinealesCubiertas nueva= new ElementosLinealesCubiertas(calidadConcreto,base,recubrimientos,espaciado);
 		
 		this.modulado[seccion]=ManejadorArregloGenerico.insertaAlFinal(vigas[seccion], this.modulado[seccion], nueva);
 		
 		if(cantVigas<this.modulado[seccion]) {
-			res=true;
+			res=vigas[seccion][this.modulado[seccion]-1];
 		}
 		
 		return res;
@@ -230,8 +230,8 @@ public class CompatibilidadEnIntervencionesHistoricas {
 		return res;		
 	}
 	
-	public boolean setRigidez(int clave, double claro, double peralte) {
-		boolean res= false;
+	public String setRigidez(int clave, double claro, double peralte) {
+		String res= "No se encontro";
 		ElementosLinealesCubiertas comp = new ElementosLinealesCubiertas(clave);
 		int pos=-1; 
 		int i=0;
@@ -242,14 +242,14 @@ public class CompatibilidadEnIntervencionesHistoricas {
 		}
 		if(pos>=0) {
 			vigas[i-1][pos].setRigidez(claro, peralte);
-			res=true;
+			res=vigas[i-1][pos].toString()+ "\n Actualizada con exito";
 		}
 		
 		return res;
 	}
 	
-	public boolean setPeralte(int clave, double claro, double rigidez) {
-		boolean res= false;
+	public String setPeralte(int clave, double claro, double rigidez) {
+		String res= "No se encontro";
 		ElementosLinealesCubiertas comp = new ElementosLinealesCubiertas(clave);
 		int pos=-1; 
 		int i=0;
@@ -259,14 +259,15 @@ public class CompatibilidadEnIntervencionesHistoricas {
 			i++;
 		}
 		if(pos>=0) {
-			res=vigas[i-1][pos].setPeralte(claro, rigidez);
+			vigas[i-1][pos].setPeralte(claro, rigidez);
+                        res=vigas[i-1][pos].toString() + "\n Actualizada con exito";
 		}
 		
 		return res;
 	}
 		
-	public boolean setClaro(int clave, double peralte, double rigidez) {
-		boolean res= false;
+	public String setClaro(int clave, double peralte, double rigidez) {
+		String res= "No se encontro";
 		ElementosLinealesCubiertas comp = new ElementosLinealesCubiertas(clave);
 		int pos=-1; 
 		int i=0;
@@ -276,7 +277,8 @@ public class CompatibilidadEnIntervencionesHistoricas {
 			i++;
 		}
 		if(pos>=0) {
-			res=vigas[i-1][pos].setClaro(rigidez, peralte);
+			vigas[i-1][pos].setClaro(rigidez, peralte);
+                        res=vigas[i-1][pos].toString() + "\n Actualizada con exito";
 		}
 		
 		return res;
