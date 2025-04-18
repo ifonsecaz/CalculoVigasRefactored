@@ -5,7 +5,7 @@
 package com.mycompany.calculovigasre.Vistas;
 
 import com.mycompany.calculovigasre.CompatibilidadEnIntervencionesHistoricas;
-import com.mycompany.calculovigasre.DeprecatedControladores.CompatibilidadControlador;
+//import com.mycompany.calculovigasre.DeprecatedControladores.CompatibilidadControlador;
 //import com.mycompany.calculovigasre.Controladores.AltaControlador;
 //import com.mycompany.calculovigasre.Controladores.CompatibilidadControlador;
 //import com.mycompany.calculovigasre.Controladores.EstudioControlador;
@@ -104,22 +104,26 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
         info.setText("Información de la obra");
 
         info1viga.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        info1viga.setText("1. Info. viga");
+        info1viga.setText("Info. viga");
+        info1viga.setActionCommand("Info. viga");
 
         infoestudio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        infoestudio.setText("2. Info. estudio");
+        infoestudio.setText("Info. estudio");
 
         infoFactor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        infoFactor.setText("3. Info. factor");
+        infoFactor.setText("Info. factor");
+        infoFactor.setActionCommand("3");
 
         altaCali.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        altaCali.setText("4. Alta calidad");
+        altaCali.setText("Alta calidad");
+        altaCali.setActionCommand("4");
 
         altaViga.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        altaViga.setText("5. Alta viga");
+        altaViga.setText("Alta viga");
 
         bajaViga.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bajaViga.setText("6. Baja viga");
+        bajaViga.setText("Baja viga");
+        bajaViga.setActionCommand("6");
 
         tipoTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -129,19 +133,23 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
         cargaBx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7 dias", "14 dias", "28 dias" }));
 
         bajaEst.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bajaEst.setText("7. Baja estudio");
+        bajaEst.setText("Baja estudio");
+        bajaEst.setActionCommand("5");
 
         vigaTiemp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        vigaTiemp.setText("8. Deterioro viga");
+        vigaTiemp.setText("Deterioro viga");
+        vigaTiemp.setActionCommand("D");
 
         reempViga.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        reempViga.setText("9. Reemplazar viga");
+        reempViga.setText("Reemplazar viga");
+        reempViga.setActionCommand("R");
 
         minF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        minF.setText("10. Factor menor");
+        minF.setText("Factor menor");
+        minF.setActionCommand("7");
 
         mayF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        mayF.setText("11. Factor mayor");
+        mayF.setText("Factor mayor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,9 +161,9 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(reempViga)
-                        .addGap(18, 18, 18)
+                        .addGap(32, 32, 32)
                         .addComponent(minF)
-                        .addGap(18, 18, 18)
+                        .addGap(33, 33, 33)
                         .addComponent(mayF))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,21 +171,16 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
                             .addComponent(info1viga, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(infoestudio)
-                                .addGap(27, 27, 27))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bajaViga)
-                                .addGap(49, 49, 49)))
+                            .addComponent(infoestudio)
+                            .addComponent(bajaViga))
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(infoFactor)
-                                .addGap(18, 18, 18)
-                                .addComponent(altaCali))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bajaEst)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(vigaTiemp))))
+                            .addComponent(bajaEst)
+                            .addComponent(infoFactor))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vigaTiemp)
+                            .addComponent(altaCali)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -189,7 +192,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(claveTxt)
                             .addComponent(tipoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))))
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 46, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -280,7 +283,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
                                 c.setVisible(true);
 			}
 			else {
-				res.setText("Inseta la calidad");
+				res.setText("Inserta la calidad");
 			}
 		}
 	}

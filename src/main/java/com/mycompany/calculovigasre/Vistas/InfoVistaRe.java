@@ -69,24 +69,31 @@ public class InfoVistaRe extends javax.swing.JFrame {
 
         inercia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         inercia.setText("Inercia");
+        inercia.setActionCommand("I");
 
         reMod.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         reMod.setText("Relación modular");
+        reMod.setActionCommand("R");
 
         areaA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         areaA.setText("Área de acero");
+        areaA.setActionCommand("A");
 
         areaAT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         areaAT.setText("Área de acero transformada");
+        areaAT.setActionCommand("T");
 
         ejeN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ejeN.setText("Eje neutro");
+        ejeN.setActionCommand("E");
 
         inS.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         inS.setText("Inercia de la sección");
+        inS.setActionCommand("S");
 
         modSec.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         modSec.setText("Módulo de la sección");
+        modSec.setActionCommand("M");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,13 +158,13 @@ public class InfoVistaRe extends javax.swing.JFrame {
 				case 'A':
 					info="" + b.areaDeAcero(claveNum);
 					break;
-				case '+':
+				case 'T':
 					info="" + b.areaDeAceroTransformada(claveNum);
 					break;
 				case 'E':
 					info="" + b.ejeNeutro(claveNum);
 					break;
-				case '*':
+				case 'S':
 					info="" + b.inerciaDeLaSeccionAgrietada(claveNum);
 					break;
 				case'M':

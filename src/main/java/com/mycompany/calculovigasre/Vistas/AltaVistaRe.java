@@ -103,12 +103,15 @@ public class AltaVistaRe extends javax.swing.JFrame {
 
         altaR.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         altaR.setText("Dar de alta rigidez");
+        altaR.setActionCommand("1");
 
         altaP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         altaP.setText("Dar de alta peralte");
+        altaP.setActionCommand("2");
 
         altaC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         altaC.setText("Dar de alta claro");
+        altaC.setActionCommand("3");
 
         calTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         calTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));

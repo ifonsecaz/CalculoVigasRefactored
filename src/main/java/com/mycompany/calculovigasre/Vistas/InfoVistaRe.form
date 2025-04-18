@@ -107,6 +107,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inercia"/>
+        <Property name="actionCommand" type="java.lang.String" value="I"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="reMod">
@@ -115,6 +116,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Relaci&#xf3;n modular"/>
+        <Property name="actionCommand" type="java.lang.String" value="R"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="areaA">
@@ -123,6 +125,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xc1;rea de acero"/>
+        <Property name="actionCommand" type="java.lang.String" value="A"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="areaAT">
@@ -131,6 +134,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xc1;rea de acero transformada"/>
+        <Property name="actionCommand" type="java.lang.String" value="T"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="ejeN">
@@ -139,6 +143,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eje neutro"/>
+        <Property name="actionCommand" type="java.lang.String" value="E"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="inS">
@@ -147,6 +152,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inercia de la secci&#xf3;n"/>
+        <Property name="actionCommand" type="java.lang.String" value="S"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="modSec">
@@ -155,6 +161,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="M&#xf3;dulo de la secci&#xf3;n"/>
+        <Property name="actionCommand" type="java.lang.String" value="M"/>
       </Properties>
     </Component>
   </SubComponents>

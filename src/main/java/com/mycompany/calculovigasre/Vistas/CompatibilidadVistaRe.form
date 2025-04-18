@@ -32,9 +32,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="reempViga" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="minF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="mayF" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -44,26 +44,18 @@
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="infoestudio" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="bajaViga" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="infoestudio" min="-2" max="-2" attributes="0"/>
+                          <Component id="bajaViga" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="infoFactor" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="altaCali" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="bajaEst" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="vigaTiemp" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="bajaEst" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="infoFactor" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="vigaTiemp" min="-2" max="-2" attributes="0"/>
+                          <Component id="altaCali" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -83,7 +75,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
@@ -226,7 +218,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="1. Info. viga"/>
+        <Property name="text" type="java.lang.String" value="Info. viga"/>
+        <Property name="actionCommand" type="java.lang.String" value="Info. viga"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="infoestudio">
@@ -234,7 +227,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="2. Info. estudio"/>
+        <Property name="text" type="java.lang.String" value="Info. estudio"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="infoFactor">
@@ -242,7 +235,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="3. Info. factor"/>
+        <Property name="text" type="java.lang.String" value="Info. factor"/>
+        <Property name="actionCommand" type="java.lang.String" value="3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="altaCali">
@@ -250,7 +244,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="4. Alta calidad"/>
+        <Property name="text" type="java.lang.String" value="Alta calidad"/>
+        <Property name="actionCommand" type="java.lang.String" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="altaViga">
@@ -258,7 +253,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="5. Alta viga"/>
+        <Property name="text" type="java.lang.String" value="Alta viga"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="bajaViga">
@@ -266,7 +261,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="6. Baja viga"/>
+        <Property name="text" type="java.lang.String" value="Baja viga"/>
+        <Property name="actionCommand" type="java.lang.String" value="6"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tipoTxt">
@@ -305,7 +301,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="7. Baja estudio"/>
+        <Property name="text" type="java.lang.String" value="Baja estudio"/>
+        <Property name="actionCommand" type="java.lang.String" value="5"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="vigaTiemp">
@@ -313,7 +310,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="8. Deterioro viga"/>
+        <Property name="text" type="java.lang.String" value="Deterioro viga"/>
+        <Property name="actionCommand" type="java.lang.String" value="D"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="reempViga">
@@ -321,7 +319,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="9. Reemplazar viga"/>
+        <Property name="text" type="java.lang.String" value="Reemplazar viga"/>
+        <Property name="actionCommand" type="java.lang.String" value="R"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="minF">
@@ -329,7 +328,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="10. Factor menor"/>
+        <Property name="text" type="java.lang.String" value="Factor menor"/>
+        <Property name="actionCommand" type="java.lang.String" value="7"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="mayF">
@@ -337,7 +337,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="11. Factor mayor"/>
+        <Property name="text" type="java.lang.String" value="Factor mayor"/>
       </Properties>
     </Component>
   </SubComponents>
