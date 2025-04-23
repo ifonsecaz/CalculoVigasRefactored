@@ -18,11 +18,11 @@ public class pruebaComp {
 
 		System.out.println(c.altaEstudio(250, 12, .3, .38, .49));
 		
-		System.out.println(c.altaViga(250, 25, 3.2, 40, 1));
+		System.out.println(c.altaViga(0,250, 25, 3.2, 40, 1));
 		
-		System.out.println(c.altaViga(250, 25, 3.2, .40, 1));
+		System.out.println(c.altaViga(0,250, 25, 3.2, .40, 1));
 		
-		System.out.println(c.altaViga(250, 30, 3.5, 50, 2));
+		System.out.println(c.altaViga(0,250, 30, 3.5, 50, 2));
 		
 		System.out.println(c.setRigidez(1, 250, 56));
 		
@@ -48,7 +48,7 @@ public class pruebaComp {
 		
 		System.out.println(c.toString());
 		
-		System.out.println(c.altaViga(250, 25, 3.2, .2, 3));
+		System.out.println(c.altaViga(0,250, 25, 3.2, .2, 3));
 		
 		System.out.println(c.setRigidez(4, 250, 65));
 		

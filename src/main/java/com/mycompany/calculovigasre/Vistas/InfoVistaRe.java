@@ -160,28 +160,28 @@ public class InfoVistaRe extends javax.swing.JFrame {
 			
 			switch(r.charAt(0)) {
 				case 'I':
-					info="" + b.inercia(claveNum);
+					info="" + String.format("%.3f", b.inercia(claveNum));
 					break;
 				case 'R':
-					info="" + b.relacionModular(claveNum);
+					info="" + String.format("%.3f", b.relacionModular(claveNum));
 					break;
 				case 'A':
-					info="" + b.areaDeAcero(claveNum);
+					info="" + String.format("%.3f", b.areaDeAcero(claveNum));
 					break;
 				case 'T':
-					info="" + b.areaDeAceroTransformada(claveNum);
+					info="" + String.format("%.3f", b.areaDeAceroTransformada(claveNum));
 					break;
 				case 'E':
-					info="" + b.ejeNeutro(claveNum);
+					info="" + String.format("%.3f", b.ejeNeutro(claveNum));
 					break;
 				case 'S':
-					info="" + b.inerciaDeLaSeccionAgrietada(claveNum);
+					info="" + String.format("%.3f", b.inerciaDeLaSeccionAgrietada(claveNum));
 					break;
 				case'M':
-					info="" + b.moduloDeSeccion(claveNum);
+					info="" + String.format("%.3f", b.moduloDeSeccion(claveNum));
 					break;
                                 case 'Z':
-                                        info="" + b.ModuloDeSeccionAgrietado(claveNum);
+                                        info="" + String.format("%.3f", b.ModuloDeSeccionAgrietado(claveNum));
 			}
 			
 			res.setText(info);

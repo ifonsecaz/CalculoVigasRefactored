@@ -3,7 +3,7 @@ package com.mycompany.calculovigasre;
 public class ElementosLinealesCubiertas implements Comparable <ElementosLinealesCubiertas>{
 	private int calidadConcreto;
 	private int base;
-        private int tipoLosa; //1 normal 2 trabelosa
+        private int tipoLosa; //0 normal 1 trabelosa
         private double moduloDeSeccion;
 	private double peralte; //altura de la pieza
 	private double rigidez;
@@ -212,7 +212,9 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 	}
 	
         private void setAlma(){
-            alma=peralte+recubrimientos-PATIN;
+            if(tipoLosa==1){
+                alma=peralte+recubrimientos-PATIN;
+            }
         }
         
 	//Este metodo para calcular la inercia tiene valor solo como comparativa con la de la seccion agrietada, pues no considera otros factores externos
@@ -296,7 +298,7 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		double res;
 		
 		res=(base*(Math.pow(ejeNeutro(), 3))/3)+relacionModular()*areaDeAcero()*(Math.pow((peralte-ejeNeutro()),2));
-                if(tipoLosa==2){
+                if(tipoLosa==1){
                     res+=2*(alma*Math.pow(PATIN,3)/3+AREADEACERO_PATIN*relacionModular()*Math.pow((ejeNeutro()-5),2));
                 }
                 
@@ -325,14 +327,14 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		cad.append("\nClave: " + clave);
 		cad.append("\nCalidad de concreto: " + calidadConcreto);
 		cad.append("\nBase: " + base);
-		cad.append("\nPeralte: " + peralte);
-		cad.append("\nRigidez: " + rigidez);
-		cad.append("\nInercia agrietada: " + inercia);
-		cad.append("\nClaro: " + claros);
-		cad.append("\nElasticidad: " + elasticidad);
+		cad.append("\nPeralte: " + String.format("%.3f", peralte));
+		cad.append("\nRigidez: " + String.format("%.3f", rigidez));
+		cad.append("\nInercia agrietada: " + String.format("%.3f", inercia));
+		cad.append("\nClaro: " + String.format("%.3f", claros));
+		cad.append("\nElasticidad: " + String.format("%.3f", elasticidad));
 		cad.append("\nRecubrimientos: " + recubrimientos);
-                cad.append("\nModulo agrietado: " + ModuloDeSeccionAgrietado());
-                if(tipoLosa==1){
+                cad.append("\nModulo agrietado: " + String.format("%.3f", ModuloDeSeccionAgrietado()));
+                if(tipoLosa==0){
                     cad.append("\nTipo: Trabe normal");
                 }
                 else{

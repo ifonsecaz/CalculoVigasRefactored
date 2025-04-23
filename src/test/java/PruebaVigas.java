@@ -6,7 +6,7 @@ import com.mycompany.calculovigasre.ElementosLinealesCubiertas;
 public class PruebaVigas {
 
 	public static void main(String[] args) {
-		ElementosLinealesCubiertas p1= new ElementosLinealesCubiertas(250,25,3.2,.4);
+		ElementosLinealesCubiertas p1= new ElementosLinealesCubiertas(0,250,25,3.2,.4);
 		
 		System.out.println(p1.toString());
 		//System.out.println(p1.setPeralte(250, 1080));
