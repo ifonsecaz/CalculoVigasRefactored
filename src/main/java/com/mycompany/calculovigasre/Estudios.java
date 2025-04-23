@@ -37,6 +37,10 @@ public class Estudios implements Comparable <Estudios>{
 		return mesesRegistrados;
 	}
 	
+        public int getIntervalosTiempo(int i){
+            return intervalosTiempo[i];
+        }
+        
 	//Para obtener un factor se realizan dos busquedas ordenadas en los arreglos de intervalos de tiempo y cargas, obteniendo de estos
 	//una especie de coordenadas
 	public double getUnFactor(int meses, int carga) {
@@ -99,6 +103,25 @@ public class Estudios implements Comparable <Estudios>{
 		}
 		return res;
 	}
+        
+        public int[] getInfoFactor(double factor){
+            int[]res={-1,-1};
+            int i=0;
+            while(i<modulosElasticidad.length){
+                int j=0;
+                while(j<modulosElasticidad[i].length){
+                    if(modulosElasticidad[i][j]!=null&&modulosElasticidad[i][j]==factor){
+                        res[0]=intervalosTiempo[i];
+                        res[1]=intervalosCarga[j];
+                        return res;
+                    
+                    }
+                    j++;
+                }
+                i++;    
+            }
+            return res;
+        }
 	
 	public boolean bajaFactor(int mes) {
 		boolean res;

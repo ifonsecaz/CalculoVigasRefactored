@@ -1,5 +1,11 @@
 package com.mycompany.calculovigasre;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class CompatibilidadEnIntervencionesHistoricas {
 	private String nomPatrimonioHistorico;
 	private ElementosLinealesCubiertas[][] vigas;	//Se opto por crear una matriz de vigas, donde cada renglon representa una seccion de vigas
@@ -33,7 +39,7 @@ public class CompatibilidadEnIntervencionesHistoricas {
 	public void setNomPatrimonioHistorico(String nomPatrimonioHistorico) {
 		this.nomPatrimonioHistorico = nomPatrimonioHistorico;
 	}
-	
+        
 	public boolean altaCalidad(int tipo) {
 		Estudios nuevo= new Estudios(tipo);
 		boolean res= false;
@@ -62,10 +68,10 @@ public class CompatibilidadEnIntervencionesHistoricas {
 		return res;
 	}
 	
-	public ElementosLinealesCubiertas altaViga(int calidadConcreto, int base, double recubrimientos,double espaciado, int seccion) {
+	public ElementosLinealesCubiertas altaViga(int tipoLosa, int calidadConcreto, int base, double recubrimientos,double espaciado, int seccion) {
 		ElementosLinealesCubiertas res=null;
 		int cantVigas=this.modulado[seccion];
-		ElementosLinealesCubiertas nueva= new ElementosLinealesCubiertas(calidadConcreto,base,recubrimientos,espaciado);
+		ElementosLinealesCubiertas nueva= new ElementosLinealesCubiertas(tipoLosa,calidadConcreto,base,recubrimientos,espaciado);
 		
 		this.modulado[seccion]=ManejadorArregloGenerico.insertaAlFinal(vigas[seccion], this.modulado[seccion], nueva);
 		
@@ -216,7 +222,8 @@ public class CompatibilidadEnIntervencionesHistoricas {
 		}
 		if(pos>=0) {
 	
-			nueva = new ElementosLinealesCubiertas(vigas[i-1][pos].getCalidadConcreto(),vigas[i-1][pos].getBase(),vigas[i-1][pos].getRecubrimientos(),vigas[i-1][pos].getModulado());
+			nueva = new ElementosLinealesCubiertas(vigas[i-1][pos].getTipoLosa(),vigas[i-1][pos].getCalidadConcreto(),vigas[i-1][pos].getBase(),vigas[i-1][pos].getRecubrimientos(),vigas[i-1][pos].getModulado());
+      
 			claro=vigas[i-1][pos].getClaros();
 			rigidez=vigas[i-1][pos].getRigidez();
 			
@@ -401,6 +408,28 @@ public class CompatibilidadEnIntervencionesHistoricas {
 		
 		return res;
 	}
+        
+        public void resetCodigo(){
+            ElementosLinealesCubiertas n=new ElementosLinealesCubiertas(1);
+            n.resetCodigo();
+        }
+        
+        public double ModuloDeSeccionAgrietado(int clave){
+                double res= -1;
+		ElementosLinealesCubiertas comp = new ElementosLinealesCubiertas(clave);
+		int pos=-1; 
+		int i=0;
+		
+		while(i<ENTRAMADO_DE_VIGAS&&pos<0) {
+			pos=ManejadorArregloGenerico.busSecOrd(vigas[i], modulado[i], comp);
+			i++;
+		}
+		if(pos>=0) {
+			res=vigas[i-1][pos].ModuloDeSeccionAgrietado();
+		}
+		
+		return res;
+        }
 	
 	//En los siguientes dos metodos se uso el -1 como una bandera que indica que dicho tipo no tiene ningun estudio,
 	//esto con motivo de evitar errores donde intentara devolveler un valor inexistente
@@ -431,6 +460,87 @@ public class CompatibilidadEnIntervencionesHistoricas {
 		
 		return res;
 	}
+        
+        public boolean guardar(String path){
+            boolean res=false;
+            
+            try{
+                FileWriter wr = new FileWriter(path+"datos.txt");
+                //myWriter.write(5);
+                try (BufferedWriter myWriter = new BufferedWriter(wr)) {
+                    //myWriter.write(5);
+                    myWriter.write(""+numCalidades); //num estudios
+                    myWriter.newLine();
+                    for(int i=0;i<numCalidades;i++){
+                        myWriter.write(""+calidadConcreto[i].getCalidadConcreto());
+                        myWriter.newLine();
+                    }
+                    for(int i=0;i<numCalidades;i++){
+                        myWriter.write(""+calidadConcreto[i].getMesesRegistrados());
+                        myWriter.newLine();
+                        myWriter.write(""+calidadConcreto[i].getCalidadConcreto());
+                        myWriter.newLine();
+                        for(int j=0;j<calidadConcreto[i].getMesesRegistrados();j++){
+                            myWriter.write(""+calidadConcreto[i].getIntervalosTiempo(j));
+                            myWriter.newLine();
+                            myWriter.write(""+calidadConcreto[i].getUnFactor(calidadConcreto[i].getIntervalosTiempo(j),7));
+                            myWriter.newLine();
+                            myWriter.write(""+calidadConcreto[i].getUnFactor(calidadConcreto[i].getIntervalosTiempo(j),14));
+                            myWriter.newLine();
+                            myWriter.write(""+calidadConcreto[i].getUnFactor(calidadConcreto[i].getIntervalosTiempo(j),28));
+                            myWriter.newLine();
+                        }
+                    }
+                    myWriter.write(""+modulado.length);
+                    myWriter.newLine();
+                    for(int i=0;i<modulado.length;i++){
+                        myWriter.write(""+modulado[i]);
+                        myWriter.newLine();
+
+                        for(int j=0;j<modulado[i];j++){
+                            myWriter.write(""+vigas[i][j].getTipoLosa());
+                            myWriter.newLine();
+                            myWriter.write(""+vigas[i][j].getCalidadConcreto());
+                            myWriter.newLine();
+                            myWriter.write(""+vigas[i][j].getBase());
+                            myWriter.newLine();
+                            myWriter.write(""+vigas[i][j].getRecubrimientos());
+                            myWriter.newLine();
+                            myWriter.write(""+vigas[i][j].getModulado());
+                            myWriter.newLine();
+                            myWriter.write(""+i);
+                            myWriter.newLine();
+                            myWriter.write(""+vigas[i][j].getClave());
+                            System.out.println(vigas[i][j].getClave());
+                            myWriter.newLine();
+                            myWriter.write(""+(vigas[i][j].getPeralte()+vigas[i][j].getRecubrimientos()));
+                            myWriter.newLine();
+                            myWriter.write(""+vigas[i][j].getClaros());
+                            myWriter.newLine();
+                            
+                            double factor=vigas[i][j].getFactor();
+                            int k=0;
+                            while(k<numCalidades){
+                                if(calidadConcreto[k].getCalidadConcreto()==vigas[i][j].getCalidadConcreto())
+                                    break;
+                                k++;
+                            }
+                            int[] val=calidadConcreto[k].getInfoFactor(factor);
+                            myWriter.write(""+val[0]);
+                            myWriter.newLine();
+                            myWriter.write(""+val[1]);
+                            myWriter.newLine();
+                        }
+                    }
+                } //num estudios
+                res=true;
+            } catch(IOException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+            
+            return res;
+        }
 	
 	public String toString() {
 		StringBuilder cad= new StringBuilder();

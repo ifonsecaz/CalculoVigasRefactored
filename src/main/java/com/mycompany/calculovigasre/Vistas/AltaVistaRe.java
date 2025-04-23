@@ -68,6 +68,8 @@ public class AltaVistaRe extends javax.swing.JFrame {
         cText = new javax.swing.JTextField();
         alta = new javax.swing.JButton();
         getviga = new javax.swing.JButton();
+        tipoBx = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(647, 358));
@@ -142,6 +144,12 @@ public class AltaVistaRe extends javax.swing.JFrame {
         getviga.setText("Info Viga");
         getviga.setActionCommand("getviga");
 
+        tipoBx.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tipoBx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Trabe losa" }));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("Tipo de viga:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,7 +194,6 @@ public class AltaVistaRe extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(25, 25, 25)
                                                 .addComponent(jLabel6)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -205,9 +212,13 @@ public class AltaVistaRe extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(alta)
+                                    .addComponent(jLabel10))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(getviga)
-                                    .addComponent(alta))))))
-                .addGap(65, 65, 65))
+                                    .addComponent(tipoBx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,16 +236,23 @@ public class AltaVistaRe extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(modTxt)
                     .addComponent(reTxt))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(secTxt)
-                    .addComponent(alta))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(secTxt)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tipoBx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(claveTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(getviga))
+                    .addComponent(getviga)
+                    .addComponent(alta))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(altaR)
@@ -244,7 +262,7 @@ public class AltaVistaRe extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(pText, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+                        .addComponent(pText, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(altaP)
                         .addComponent(jLabel7)))
@@ -277,7 +295,9 @@ public class AltaVistaRe extends javax.swing.JFrame {
 			
 			ElementosLinealesCubiertas f;
 
-			f=d.altaViga(cI, baI, rI, mI, sI);
+                        int tipo=tipoBx.getSelectedIndex();
+                        
+			f=d.altaViga(tipo,cI, baI, rI, mI, sI);
 		
 			
 			if(f!=null) {
@@ -411,6 +431,7 @@ public class AltaVistaRe extends javax.swing.JFrame {
     private javax.swing.JButton getviga;
     private javax.swing.JTextArea info;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -425,5 +446,6 @@ public class AltaVistaRe extends javax.swing.JFrame {
     private javax.swing.JTextField rText;
     private javax.swing.JTextField reTxt;
     private javax.swing.JTextField secTxt;
+    private javax.swing.JComboBox<String> tipoBx;
     // End of variables declaration//GEN-END:variables
 }

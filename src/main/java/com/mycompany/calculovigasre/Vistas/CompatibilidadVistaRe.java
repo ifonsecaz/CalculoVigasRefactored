@@ -12,9 +12,15 @@ import com.mycompany.calculovigasre.CompatibilidadEnIntervencionesHistoricas;
 //import com.mycompany.calculovigasre.Controladores.InfoControlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
 /**
@@ -23,6 +29,8 @@ import javax.swing.JTextField;
  */
 public class CompatibilidadVistaRe extends javax.swing.JFrame {
     private static CompatibilidadEnIntervencionesHistoricas a= new CompatibilidadEnIntervencionesHistoricas();
+    private String path="src/main/java/Files/";
+    private String nombre;
     /**
      * Creates new form CompatibilidadVistaRe
      */
@@ -54,6 +62,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -76,6 +85,8 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
         reempViga = new javax.swing.JButton();
         minF = new javax.swing.JButton();
         mayF = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(594, 472));
@@ -105,7 +116,6 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
 
         info1viga.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         info1viga.setText("Info. viga");
-        info1viga.setActionCommand("Info. viga");
 
         infoestudio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         infoestudio.setText("Info. estudio");
@@ -151,64 +161,86 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
         mayF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mayF.setText("Factor mayor");
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Cargar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(reempViga)
-                        .addGap(32, 32, 32)
-                        .addComponent(minF)
-                        .addGap(33, 33, 33)
-                        .addComponent(mayF))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(altaViga)
-                            .addComponent(info1viga, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(infoestudio)
-                            .addComponent(bajaViga))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bajaEst)
-                            .addComponent(infoFactor))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vigaTiemp)
-                            .addComponent(altaCali)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(claveTxt)
-                            .addComponent(tipoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))))
-                .addGap(0, 46, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(279, 279, 279)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cargaBx, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tiempoTxt)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(181, 181, 181)
+                                .addComponent(info)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cargaBx, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tiempoTxt)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(info)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(205, 205, 205)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(reempViga)
+                                .addGap(32, 32, 32)
+                                .addComponent(minF)
+                                .addGap(33, 33, 33)
+                                .addComponent(mayF))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(altaViga)
+                                    .addComponent(info1viga, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(infoestudio)
+                                    .addComponent(bajaViga))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bajaEst)
+                                    .addComponent(infoFactor))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vigaTiemp)
+                                    .addComponent(altaCali)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(12, 12, 12)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(claveTxt)
+                                    .addComponent(tipoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))))
+                        .addGap(0, 46, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +265,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
                     .addComponent(infoestudio)
                     .addComponent(infoFactor)
                     .addComponent(altaCali))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bajaEst)
                     .addComponent(altaViga)
@@ -244,12 +276,102 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
                     .addComponent(reempViga)
                     .addComponent(minF)
                     .addComponent(mayF))
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(9, 9, 9)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        boolean resG;
+        
+        resG=a.guardar(path);
+        
+        if(resG){
+            res.setText("Guardado en " + path);
+        }
+        else{
+            res.setText("No se pudo guardar");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FileReader datos = null;
+        try{
+            a= new CompatibilidadEnIntervencionesHistoricas("datos");
+            final JFileChooser fc = new JFileChooser();
+            fc.showOpenDialog(null);
+            datos = new FileReader(fc.getSelectedFile());
+            int numC, c,t, numM,m, numS, numV, ba, s, inicio, carg;
+            double f1, f2, f3, r, p, cl, mod;
+            try(BufferedReader  lec= new BufferedReader(datos)){
+                numC= Integer.parseInt(lec.readLine());
+                for(int i=0; i<numC; i++) {
+                    c=Integer.parseInt(lec.readLine());
+                    a.altaCalidad(c);
+                }
+                
+                for(int i=0; i<numC; i++) {
+                    numM=Integer.parseInt(lec.readLine());
+                    c=Integer.parseInt(lec.readLine());
+                    for(int j=0; j<numM; j++) {
+                        m=Integer.parseInt(lec.readLine());
+                        f1=Double.parseDouble(lec.readLine());
+                        f2=Double.parseDouble(lec.readLine());
+                        f3=Double.parseDouble(lec.readLine());
+                        
+                        a.altaEstudio(c, m, f1, f2, f3);
+                    }
+                }
+                numS= Integer.parseInt(lec.readLine());
+                System.out.println(numS);
+                a.resetCodigo();
+                
+                for(int i=0; i<numS; i++) {
+                    System.out.println("viga");
+                    System.out.println(i);
+                    numV=Integer.parseInt(lec.readLine());
+                    for(int j=0;j<numV;j++){
+                        t=Integer.parseInt(lec.readLine());
+                        c=Integer.parseInt(lec.readLine());
+                        ba=Integer.parseInt(lec.readLine());
+                        r=Double.parseDouble(lec.readLine());
+                        mod=Double.parseDouble(lec.readLine());
+                        s=Integer.parseInt(lec.readLine());
+
+                        a.altaViga(t,c, ba, r, mod, s);
+                        
+                        inicio=Integer.parseInt(lec.readLine());
+                        p=Double.parseDouble(lec.readLine());
+                        cl=Double.parseDouble(lec.readLine());
+                        m=Integer.parseInt(lec.readLine());
+                        carg=Integer.parseInt(lec.readLine());
+
+                        a.setRigidez(inicio, cl, p);
+                        if(m!=-1 && carg!=-1)
+                            a.vigaEnElTiempo(inicio, m, carg);
+                    }
+                }
+                lec.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CompatibilidadVistaRe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch(FileNotFoundException ex){
+                Logger.getLogger(CompatibilidadVistaRe.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                datos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CompatibilidadVistaRe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     private class Escuchador1 implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			String r;
@@ -475,7 +597,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
             public void run() {
                 CompatibilidadVistaRe b= new CompatibilidadVistaRe("Compatibilidad");
 		b.setVisible(true);
-		int numC, c, numM,m, numS, numV, ba, mod, s, p, cl, inicio, fin, carg;
+		int numC, c,t, numM,m, numS, numV, ba, mod, s, p, cl, inicio, fin, carg;
 		double f1, f2, f3, r;
 		
 		File datos = new File("src/main/java/Files/CasaVirreinal.txt");
@@ -507,6 +629,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
 			
 			for(int i=0; i<numS; i++) {
 				numV=lec.nextInt();
+                                t=lec.nextInt();
 				c=lec.nextInt();
 				ba=lec.nextInt();
 				r=lec.nextDouble();
@@ -514,8 +637,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
 				s=lec.nextInt();
 				
 				for(int j=0; j<numV; j++) {
-					
-					a.altaViga(c, ba, r, mod, s);
+                                        a.altaViga(t,c, ba, r, mod, s);
 				}
 				inicio=lec.nextInt();
 				fin=lec.nextInt();
@@ -540,6 +662,7 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
 				
 				a.reemplazaViga(cl);
 			}
+                        lec.close();
 			
 		}
 		catch(FileNotFoundException err){
@@ -561,6 +684,9 @@ public class CompatibilidadVistaRe extends javax.swing.JFrame {
     private javax.swing.JButton info1viga;
     private javax.swing.JButton infoFactor;
     private javax.swing.JButton infoestudio;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

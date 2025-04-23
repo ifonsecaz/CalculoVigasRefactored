@@ -7,6 +7,7 @@ com\mycompany\calculovigasre\DeprecatedControladores\AltaControlador$Escuchador8
 VistasDeprecated\CompatibilidadVista.class
 com\mycompany\calculovigasre\ManejadorArregloGenerico.class
 com\mycompany\calculovigasre\Vistas\EstudioVistaRe.class
+com\mycompany\calculovigasre\Vistas\CompatibilidadVistaRe$2.class
 VistasDeprecated\EstudioVista.class
 com\mycompany\calculovigasre\DeprecatedControladores\CompatibilidadControlador.class
 com\mycompany\calculovigasre\DeprecatedControladores\CompControlador$e1.class
@@ -39,4 +40,5 @@ com\mycompany\calculovigasre\DeprecatedControladores\CompatibilidadControlador$E
 com\mycompany\calculovigasre\DeprecatedControladores\EstudioControlador$Escuchador6.class
 com\mycompany\calculovigasre\ManejadorMatricesGenerico.class
 com\mycompany\calculovigasre\Vistas\CompatibilidadVistaRe$Escuchador1.class
+com\mycompany\calculovigasre\Vistas\CompatibilidadVistaRe$3.class
 com\mycompany\calculovigasre\ElementosLinealesCubiertas.class

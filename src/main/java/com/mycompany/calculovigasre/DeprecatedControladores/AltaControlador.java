@@ -40,7 +40,7 @@ public class AltaControlador extends AltaVista{
 			
 			ElementosLinealesCubiertas f;
 
-			f=d.altaViga(cI, baI, rI, mI, sI);
+			f=d.altaViga(1,cI, baI, rI, mI, sI);
 		
                         if(f!=null) {
 				g=f.toString()+"\nSe registro con exito";

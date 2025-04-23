@@ -261,7 +261,7 @@ public class CompatibilidadControlador extends CompatibilidadVista{
 				
 				for(int j=0; j<numV; j++) {
 					
-					a.altaViga(c, ba, r, mod, s);
+					a.altaViga(1,c, ba, r, mod, s);
 				}
 				inicio=lec.nextInt();
 				fin=lec.nextInt();

@@ -29,24 +29,26 @@
           <Group type="102" attributes="0">
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="inercia" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="reMod" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="areaA" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="areaAT" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ejeN" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="inS" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="modSec" min="-2" pref="200" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="res" pref="266" max="32767" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="inercia" max="32767" attributes="0"/>
+                          <Component id="reMod" alignment="0" max="32767" attributes="0"/>
+                          <Component id="areaA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="areaAT" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ejeN" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inS" alignment="0" max="32767" attributes="0"/>
+                          <Component id="modSec" max="32767" attributes="0"/>
+                          <Component id="modA" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,7 +57,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="res" max="32767" attributes="0"/>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="inercia" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="reMod" min="-2" max="-2" attributes="0"/>
@@ -69,7 +71,9 @@
               <Component id="inS" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="modSec" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="modA" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -162,6 +166,15 @@
         </Property>
         <Property name="text" type="java.lang.String" value="M&#xf3;dulo de la secci&#xf3;n"/>
         <Property name="actionCommand" type="java.lang.String" value="M"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="modA">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="M&#xf3;dulo agrietado"/>
+        <Property name="actionCommand" type="java.lang.String" value="Z"/>
       </Properties>
     </Component>
   </SubComponents>

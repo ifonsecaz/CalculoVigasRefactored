@@ -3,6 +3,8 @@ package com.mycompany.calculovigasre;
 public class ElementosLinealesCubiertas implements Comparable <ElementosLinealesCubiertas>{
 	private int calidadConcreto;
 	private int base;
+        private int tipoLosa; //1 normal 2 trabelosa
+        private double moduloDeSeccion;
 	private double peralte; //altura de la pieza
 	private double rigidez;
 	private double claros; //largo de la pieza
@@ -11,11 +13,15 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 	private double inercia;
 	private double modulado; //Espaciado que se deja entre cada viga al construir
 	private double elasticidad;
+        private double alma;
+        private double factor;
 	private static int codigo=1;
 	private final int CALIDAD_ACERO=4200;
 	private final int ELASTICIDAD_ACERO=2100000;
 	private final int ELASTICIDAD_CONCRETO_II=8000;
 	private final int ELASTICIDAD_CONCRETO_I=14000;
+        private final double PATIN=10;
+        private final double AREADEACERO_PATIN=1.42;
 	
 
 	public ElementosLinealesCubiertas(int clave) {
@@ -23,21 +29,26 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		this.clave=clave;
 	}
 	
-	public ElementosLinealesCubiertas(int calidadConcreto, int base, double recubrimientos,double modulado) {
+	public ElementosLinealesCubiertas(int tipoLosa, int calidadConcreto, int base, double recubrimientos,double modulado) {
 		//Mediante el constructor se crea el objeto, pero necesita de 2 atributos dados por los set (rigidez, inercia o peralte)
 		//los cuales determinan al tercero
 		this.clave=codigo;
+                System.out.println(this.clave);
 		codigo++;
 		//Pose de un generador de claves para identificar a cada objeto
 		this.calidadConcreto = calidadConcreto;
 		this.base = base;
 		this.recubrimientos = recubrimientos;
 		this.modulado=modulado;
+                this.tipoLosa=tipoLosa;
+                    
 		this.inercia=0;
 		this.peralte=0;
 		this.rigidez=0;
 		this.claros=0;
-		
+		this.alma=0;
+                this.factor=0;
+                
 		if(this.calidadConcreto<=200) {
 			elasticidad=ELASTICIDAD_CONCRETO_II;
 		}
@@ -51,6 +62,10 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		return calidadConcreto;
 	}
 
+        public int getTipoLosa(){
+            return tipoLosa;
+        }
+        
 	public int getBase() {
 		return base;
 	}
@@ -75,7 +90,7 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		return recubrimientos;
 	}
 	
-	public double getClave() {
+	public int getClave() {
 		return clave;
 	}
 
@@ -98,9 +113,22 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 	public double getElasticidad() {
 		return elasticidad;
 	}
+        
+        public double getAnchoPatin(){
+            return alma;
+        }
+        
+        public double getFactor(){
+            return factor;
+        }
+        
+        public void resetCodigo(){
+            codigo=1;
+        }
 	
 	public void setElasticidad(double factor) {
 		//Con motivos de que el usuario pueda probar con diferentes factores, se decidio repetir la misma comprobacion del constructor
+                this.factor=factor;
 		if(this.calidadConcreto<=200) {
 			elasticidad=ELASTICIDAD_CONCRETO_II*factor;
 		}
@@ -123,12 +151,14 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 
 			this.peralte=peralte-recubrimientos;
 			this.claros=claro;
-			this.inercia=this.inerciaDeLaSeccionAgrietada();
+                        setAlma();
+                        this.inercia=this.inerciaDeLaSeccionAgrietada();
 			
 			r=inerciaDeLaSeccionAgrietada()/this.claros;
 			
 			this.rigidez=r;
 			res=true;
+
 		}
 		return res;
 	}
@@ -142,12 +172,14 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		if(this.rigidez==0&&this.peralte==0&&peralte<=3*base&&peralte>=base) {
 			this.rigidez=rigidez;
 			this.peralte=peralte-recubrimientos;
+                        setAlma();
 			this.inercia=this.inerciaDeLaSeccionAgrietada();
 			
 			c=inerciaDeLaSeccionAgrietada()/rigidez;
 			
 			this.claros=c;
 			res=true;
+
 		}
 		
 		return res;
@@ -169,15 +201,20 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 			p=Math.cbrt(r);
 			
 			this.peralte=p-recubrimientos;
-			
+			setAlma();
+                        
 			this.inercia=this.inerciaDeLaSeccionAgrietada();
-			
+                        
 			res=true;
 		}
 		
 		return res;
 	}
 	
+        private void setAlma(){
+            alma=peralte+recubrimientos-PATIN;
+        }
+        
 	//Este metodo para calcular la inercia tiene valor solo como comparativa con la de la seccion agrietada, pues no considera otros factores externos
 	public double inercia() {
 		double res=-1;
@@ -204,6 +241,7 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		fc=(calidadConcreto*0.80)*0.85;
 		
 		res=((double)fc/CALIDAD_ACERO)*(5100.0/(6000.0+CALIDAD_ACERO))*base*peralte*0.75;
+                
 		
 		return res;
 	}
@@ -258,6 +296,10 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		double res;
 		
 		res=(base*(Math.pow(ejeNeutro(), 3))/3)+relacionModular()*areaDeAcero()*(Math.pow((peralte-ejeNeutro()),2));
+                if(tipoLosa==2){
+                    res+=2*(alma*Math.pow(PATIN,3)/3+AREADEACERO_PATIN*relacionModular()*Math.pow((ejeNeutro()-5),2));
+                }
+                
 		return res;
 	}
 	
@@ -268,6 +310,14 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		
 		return res;
 	}
+        
+        public double ModuloDeSeccionAgrietado(){
+            double res;
+            
+            res=2*inercia/(peralte+recubrimientos);
+            
+            return res;
+        }
 	
 	public String toString() {
 		StringBuilder cad= new StringBuilder();
@@ -277,10 +327,18 @@ public class ElementosLinealesCubiertas implements Comparable <ElementosLineales
 		cad.append("\nBase: " + base);
 		cad.append("\nPeralte: " + peralte);
 		cad.append("\nRigidez: " + rigidez);
-		cad.append("\nInercia: " + inercia);
+		cad.append("\nInercia agrietada: " + inercia);
 		cad.append("\nClaro: " + claros);
 		cad.append("\nElasticidad: " + elasticidad);
 		cad.append("\nRecubrimientos: " + recubrimientos);
+                cad.append("\nModulo agrietado: " + ModuloDeSeccionAgrietado());
+                if(tipoLosa==1){
+                    cad.append("\nTipo: Trabe normal");
+                }
+                else{
+                    cad.append("\nTipo: Trabe losa");
+                    cad.append("\nAncho patín: "+alma);
+                }
 		
 		return cad.toString();
 	}

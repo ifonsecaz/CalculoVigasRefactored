@@ -30,7 +30,8 @@ public class InfoVistaRe extends javax.swing.JFrame {
         ejeN.addActionListener(new Escuchador7());
         inS.addActionListener(new Escuchador7());
         modSec.addActionListener(new Escuchador7());
-
+        modA.addActionListener(new Escuchador7());
+        
         claveNum=Integer.parseInt(clave);
 
         infoViga.setText(b.getUnaViga(claveNum));
@@ -56,6 +57,7 @@ public class InfoVistaRe extends javax.swing.JFrame {
         ejeN = new javax.swing.JButton();
         inS = new javax.swing.JButton();
         modSec = new javax.swing.JButton();
+        modA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 437));
@@ -95,6 +97,10 @@ public class InfoVistaRe extends javax.swing.JFrame {
         modSec.setText("Módulo de la sección");
         modSec.setActionCommand("M");
 
+        modA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        modA.setText("Módulo agrietado");
+        modA.setActionCommand("Z");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,26 +109,28 @@ public class InfoVistaRe extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inercia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(reMod, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(areaA, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(areaAT)
-                            .addComponent(ejeN, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inS, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modSec, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(res, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(res, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                        .addContainerGap(36, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(inercia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(reMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(areaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(areaAT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ejeN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(modSec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(modA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(71, 71, 71))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(res)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(inercia)
                 .addGap(18, 18, 18)
                 .addComponent(reMod)
@@ -136,7 +144,9 @@ public class InfoVistaRe extends javax.swing.JFrame {
                 .addComponent(inS)
                 .addGap(18, 18, 18)
                 .addComponent(modSec)
-                .addGap(44, 44, 44))
+                .addGap(18, 18, 18)
+                .addComponent(modA)
+                .addGap(21, 21, 21))
             .addComponent(jScrollPane1)
         );
 
@@ -170,6 +180,8 @@ public class InfoVistaRe extends javax.swing.JFrame {
 				case'M':
 					info="" + b.moduloDeSeccion(claveNum);
 					break;
+                                case 'Z':
+                                        info="" + b.ModuloDeSeccionAgrietado(claveNum);
 			}
 			
 			res.setText(info);
@@ -218,6 +230,7 @@ public class InfoVistaRe extends javax.swing.JFrame {
     private javax.swing.JButton inercia;
     private javax.swing.JTextArea infoViga;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modA;
     private javax.swing.JButton modSec;
     private javax.swing.JButton reMod;
     private javax.swing.JTextField res;
